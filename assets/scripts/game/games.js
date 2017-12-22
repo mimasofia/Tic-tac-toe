@@ -1,5 +1,5 @@
 const ticTacToe = {
-  turn: 'o',
+  turn: 'x',
   currentGame: ['', '', '', '', '', '', '', '', ''],
   win: false
 }
@@ -11,57 +11,75 @@ const ticTacToe = {
 // $('.game-board').on('click', addZero)
 
 const changeToken = function () {
-  this.turn = (this.turn === 'o') ? 'x' : 'o'
+  ticTacToe.turn = (ticTacToe.turn === 'o') ? 'x' : 'o'
   // this.win = this.checkForWinner()
-  return ticTacToe.turn
 }
 
 // these add the 'x' so a specified intex for now they are only adding x
 // becuse thats what i have in the items part.
+
 $('#cellZero').on('click', function () {
-  ticTacToe.currentGame.splice(0, 1, 'x')
+  ticTacToe.currentGame.splice(0, 1, ticTacToe.turn)
+  changeToken()
   console.log(ticTacToe.currentGame)
+  checkForWinner()
   // this is specific to the top left cell and only works for that one
 })
 
 $('#cellOne').on('click', function () {
   ticTacToe.currentGame.splice(1, 1, ticTacToe.turn)
+  changeToken()
   console.log(ticTacToe.currentGame)
+  checkForWinner()
 })
 
 $('#cellTwo').on('click', function () {
   ticTacToe.currentGame.splice(2, 1, ticTacToe.turn)
+  changeToken()
   console.log(ticTacToe.currentGame)
+  checkForWinner()
 })
 
 $('#cellThree').on('click', function () {
   ticTacToe.currentGame.splice(3, 1, ticTacToe.turn)
+  changeToken()
   console.log(ticTacToe.currentGame)
+  checkForWinner()
 })
 
 $('#cellFour').on('click', function () {
   ticTacToe.currentGame.splice(4, 1, ticTacToe.turn)
+  changeToken()
   console.log(ticTacToe.currentGame)
+  checkForWinner()
 })
 
 $('#cellFive').on('click', function () {
   ticTacToe.currentGame.splice(5, 1, ticTacToe.turn)
+  changeToken()
   console.log(ticTacToe.currentGame)
+  checkForWinner()
 })
 
 $('#cellSix').on('click', function () {
   ticTacToe.currentGame.splice(6, 1, ticTacToe.turn)
+  changeToken()
   console.log(ticTacToe.currentGame)
+  checkForWinner()
 })
 
 $('#cellSeven').on('click', function () {
   ticTacToe.currentGame.splice(7, 1, ticTacToe.turn)
+  changeToken()
   console.log(ticTacToe.currentGame)
+  checkForWinner()
 })
 
 $('#cellEight').on('click', function () {
   ticTacToe.currentGame.splice(8, 1, ticTacToe.turn)
+  changeToken()
   console.log(ticTacToe.currentGame)
+  checkForWinner()
 })
 
 const checkForWinner = function () {
@@ -84,7 +102,5 @@ const checkForWinner = function () {
   (ticTacToe.currentGame[0] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[8] === 'o') ||
   (ticTacToe.currentGame[2] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[6] === 'o')) {
     console.log('Player O is the winner')
-  } else {
-    console.log('There is a tie')
   }
 }
