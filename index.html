@@ -32,6 +32,41 @@
       </div>
     </div>
 
-    <p class="message"></p>
+    <p id="message"></p>
+
+    <form id="sign-up">
+      <fieldset>
+        <legend>Sign up!</legend>
+        <input type="text" name="credentials[email]" value="" placeholder="Enter Email">
+        <input type="password" name="credentials[password]" value="" placeholder="Enter Password">
+        <input type="password" name="credentials[password_confirmation]" value="" placeholder="Enter Password Again">
+        <input type="submit" name="submit" value="Sign up!">
+      </fieldset>
+    </form>
+
+    <form id="sign-in">
+      <fieldset>
+        <legend>Sign In</legend>
+        <input type="text" name="credentials[email]" placeholder="Enter Email Here">
+        <input type="password" name="credentials[password]" placeholder="Enter Password Here">
+        <input type="submit" name="submit" value="Sign In">
+      </fieldset>
+    </form>
+
+    <form id="password-change">
+        <fieldset>
+          <legend>Change Password</legend>
+          <input type="password" name="passwords[old]" placeholder="Old password here">
+          <input type="password" name="passwords[new]" placeholder="New password here">
+          <input type="submit" name="submit" value="Change Password">
+        </fieldset>
+      </form>
+
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign Out</legend>
+          <input type="submit" name="submit" value="Sign out">
+        </fieldset>
+      </form>
     </body>
 </html>
