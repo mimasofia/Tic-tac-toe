@@ -117,8 +117,10 @@ $('#cellEight').on('click', function () {
 })
 
 const endGame = function () {
+  // this is only true when there is a winner
   if (ticTacToe.win === true) {
     console.log('Restart Game')
+    // this is so you cannot keep playing after there is a winner, you cannot click
     $('.game-board').off('click')
   }
 }
@@ -135,7 +137,9 @@ const checkForWinner = function () {
   (ticTacToe.currentGame[0] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[8] === 'x') ||
   (ticTacToe.currentGame[2] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[6] === 'x')) {
     console.log('Player X is the winner')
+    // have to change the win to true so that the end function can work
     ticTacToe.win = true
+    // then have to envoke the end game function
     endGame()
     // this other section is for the 'o' token
   } else if ((ticTacToe.currentGame[0] === 'o' && ticTacToe.currentGame[1] === 'o' && ticTacToe.currentGame[2] === 'o') ||
@@ -150,6 +154,8 @@ const checkForWinner = function () {
     ticTacToe.win = true
     endGame()
   } else if (ticTacToe.counter === 9) {
+    // every time there is a click the counter goes up by 1, since there are 9 spots
+    // if they all get filled up that means there was no winner so its a tie
     console.log('its a tie')
   }
 }
