@@ -1,3 +1,5 @@
+'use strict'
+
 const ticTacToe = {
   turn: 'x',
   currentGame: ['', '', '', '', '', '', '', '', ''],
@@ -154,8 +156,10 @@ const checkForWinner = function () {
     ticTacToe.win = true
     endGame()
   } else if (ticTacToe.counter === 9) {
+    ticTacToe.win = true
     // every time there is a click the counter goes up by 1, since there are 9 spots
     // if they all get filled up that means there was no winner so its a tie
     console.log('its a tie')
+    endGame()
   }
 }
