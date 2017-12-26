@@ -41,9 +41,26 @@ const signOut = function (data) {
   })
 }
 
-module.exorts = {
+const createGame = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'POST',
+    data
+  })
+}
+
+const showGame = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + id,
+    method: 'GET'
+  })
+}
+
+module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  createGame,
+  showGame
 }

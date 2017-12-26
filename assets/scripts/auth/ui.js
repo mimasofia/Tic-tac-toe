@@ -29,8 +29,7 @@ const changePasswordSuccess = function () {
   $('#message').text('Successfully changed password')
 }
 
-const changePasswordFaliure = function (error) {
-  console.error(error)
+const changePasswordFailure = function () {
   $('#message').text('Error change password')
 }
 
@@ -51,7 +50,7 @@ module.exports = {
   signInSuccess,
   signInFailure,
   changePasswordSuccess,
-  changePasswordFaliure,
+  changePasswordFailure,
   signOutSuccess,
   signOutFailure
 }
