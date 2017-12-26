@@ -1,4 +1,4 @@
-# sh scripts/json/index.sh
+# sh scripts/json/show.sh
 curl "https://aqueous-atoll-85096.herokuapp.com/games/${ID}" \
 --include \
 --request GET \

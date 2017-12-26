@@ -13,6 +13,15 @@ const changeToken = function () {
   ticTacToe.turn = (ticTacToe.turn === 'o') ? 'x' : 'o'
 }
 
+// $('.new-game-button').on('click', function () {
+//   ticTacToe.over = false
+//   ticTacToe.currentGame = ['', '', '', '', '', '', '', '', '']
+//   ticTacToe.turn = 'x'
+//   ticTacToe.counter = 0
+//   $('.game-board').empty()
+//   $('.game-messages').empty()
+// })
+
 $('#cellZero').on('click', function () {
   // this clears any message that was from a previous click when you click on a new cell
   $('.game-messages').empty()
@@ -27,6 +36,8 @@ $('#cellZero').on('click', function () {
     // after that it changes the token so that the next time you click it will be 'o'
     changeToken()
     console.log(ticTacToe.currentGame)
+    // this shows whos turn it is next
+    $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     // then we tell it to check for winner after every play
     checkForWinner()
     // this is specific to the topleft cell and only works for that one
@@ -43,6 +54,7 @@ $('#cellOne').on('click', function () {
     ticTacToe.counter++
     changeToken()
     console.log(ticTacToe.currentGame)
+    $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
     $('.game-messages').text('Choose another spot')
@@ -57,6 +69,7 @@ $('#cellTwo').on('click', function () {
     ticTacToe.counter++
     changeToken()
     console.log(ticTacToe.currentGame)
+    $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
     $('.game-messages').text('Choose another spot')
@@ -71,6 +84,7 @@ $('#cellThree').on('click', function () {
     ticTacToe.counter++
     changeToken()
     console.log(ticTacToe.currentGame)
+    $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
     $('.game-messages').text('Choose another spot')
@@ -85,6 +99,7 @@ $('#cellFour').on('click', function () {
     ticTacToe.counter++
     changeToken()
     console.log(ticTacToe.currentGame)
+    $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
     $('.game-messages').text('Choose another spot')
@@ -99,6 +114,7 @@ $('#cellFive').on('click', function () {
     ticTacToe.counter++
     changeToken()
     console.log(ticTacToe.currentGame)
+    $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
     $('.game-messages').text('Choose another spot')
@@ -113,6 +129,7 @@ $('#cellSix').on('click', function () {
     ticTacToe.counter++
     changeToken()
     console.log(ticTacToe.currentGame)
+    $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
     $('.game-messages').text('Choose another spot')
@@ -127,6 +144,7 @@ $('#cellSeven').on('click', function () {
     ticTacToe.counter++
     changeToken()
     console.log(ticTacToe.currentGame)
+    $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
     $('.game-messages').text('Choose another spot')
@@ -141,6 +159,7 @@ $('#cellEight').on('click', function () {
     ticTacToe.counter++
     changeToken()
     console.log(ticTacToe.currentGame)
+    $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
     $('.game-messages').text('Choose another spot')
@@ -152,6 +171,7 @@ const endGame = function () {
   if (ticTacToe.over === true) {
     console.log('Restart Game')
     // this is so you cannot keep playing after there is a winner, you cannot click
+    // it also doesnt allow you to play again when you click the button 'new game'
     $('.game-board').off('click')
   } else {
     $('.game-messages').text('Choose another spot')
@@ -162,13 +182,13 @@ const checkForWinner = function () {
   // this function is supposed to check if there are three of the same things in a row and log winner
   // this section is for the 'x' token
   if ((ticTacToe.currentGame[0] === 'x' && ticTacToe.currentGame[1] === 'x' && ticTacToe.currentGame[2] === 'x') ||
-  (ticTacToe.currentGame[3] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[5] === 'x') ||
-  (ticTacToe.currentGame[6] === 'x' && ticTacToe.currentGame[7] === 'x' && ticTacToe.currentGame[8] === 'x') ||
-  (ticTacToe.currentGame[0] === 'x' && ticTacToe.currentGame[3] === 'x' && ticTacToe.currentGame[6] === 'x') ||
-  (ticTacToe.currentGame[1] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[7] === 'x') ||
-  (ticTacToe.currentGame[2] === 'x' && ticTacToe.currentGame[5] === 'x' && ticTacToe.currentGame[8] === 'x') ||
-  (ticTacToe.currentGame[0] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[8] === 'x') ||
-  (ticTacToe.currentGame[2] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[6] === 'x')) {
+    (ticTacToe.currentGame[3] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[5] === 'x') ||
+    (ticTacToe.currentGame[6] === 'x' && ticTacToe.currentGame[7] === 'x' && ticTacToe.currentGame[8] === 'x') ||
+    (ticTacToe.currentGame[0] === 'x' && ticTacToe.currentGame[3] === 'x' && ticTacToe.currentGame[6] === 'x') ||
+    (ticTacToe.currentGame[1] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[7] === 'x') ||
+    (ticTacToe.currentGame[2] === 'x' && ticTacToe.currentGame[5] === 'x' && ticTacToe.currentGame[8] === 'x') ||
+    (ticTacToe.currentGame[0] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[8] === 'x') ||
+    (ticTacToe.currentGame[2] === 'x' && ticTacToe.currentGame[4] === 'x' && ticTacToe.currentGame[6] === 'x')) {
     console.log('Player X is the winner')
     $('.game-messages').text('Player X won')
     // have to change the win to true so that the end function can work
@@ -177,13 +197,13 @@ const checkForWinner = function () {
     endGame()
     // this other section is for the 'o' token
   } else if ((ticTacToe.currentGame[0] === 'o' && ticTacToe.currentGame[1] === 'o' && ticTacToe.currentGame[2] === 'o') ||
-  (ticTacToe.currentGame[3] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[5] === 'o') ||
-  (ticTacToe.currentGame[6] === 'o' && ticTacToe.currentGame[7] === 'o' && ticTacToe.currentGame[8] === 'o') ||
-  (ticTacToe.currentGame[0] === 'o' && ticTacToe.currentGame[3] === 'o' && ticTacToe.currentGame[6] === 'o') ||
-  (ticTacToe.currentGame[1] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[7] === 'o') ||
-  (ticTacToe.currentGame[2] === 'o' && ticTacToe.currentGame[5] === 'o' && ticTacToe.currentGame[8] === 'o') ||
-  (ticTacToe.currentGame[0] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[8] === 'o') ||
-  (ticTacToe.currentGame[2] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[6] === 'o')) {
+    (ticTacToe.currentGame[3] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[5] === 'o') ||
+    (ticTacToe.currentGame[6] === 'o' && ticTacToe.currentGame[7] === 'o' && ticTacToe.currentGame[8] === 'o') ||
+    (ticTacToe.currentGame[0] === 'o' && ticTacToe.currentGame[3] === 'o' && ticTacToe.currentGame[6] === 'o') ||
+    (ticTacToe.currentGame[1] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[7] === 'o') ||
+    (ticTacToe.currentGame[2] === 'o' && ticTacToe.currentGame[5] === 'o' && ticTacToe.currentGame[8] === 'o') ||
+    (ticTacToe.currentGame[0] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[8] === 'o') ||
+    (ticTacToe.currentGame[2] === 'o' && ticTacToe.currentGame[4] === 'o' && ticTacToe.currentGame[6] === 'o')) {
     console.log('Player O is the winner')
     $('.game-messages').text('Player O won')
     ticTacToe.over = true

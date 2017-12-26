@@ -12,6 +12,7 @@ curl "https://aqueous-atoll-85096.herokuapp.com/change-password/${ID}" \
       "old": "'"${OLD}"'",
       "new": "'"${NEW}"'"
     }
+
   }'
 
 echo

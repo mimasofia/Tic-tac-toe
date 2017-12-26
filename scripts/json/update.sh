@@ -11,7 +11,8 @@ curl "https://aqueous-atoll-85096.herokuapp.com/games/${ID}" \
       "cell": {
         "index": "'"${INDEX}"'",
         "value": "'"${VALUE}"'"
-      }
+      },
+      "over": "'"${OVER}"'"
     }
   }'
 

@@ -35,6 +35,10 @@
     <div class="game-messages"></div>
     <p id="message"></p>
 
+    <!-- <div class="new-game"> -->
+      <!-- <button class="new-game-button">New Game</button> -->
+    <!-- </div> -->
+
     <form id="sign-up">
       <fieldset>
         <legend>Sign up!</legend>
@@ -67,6 +71,24 @@
         <fieldset>
           <legend>Sign Out</legend>
           <input type="submit" name="submit" value="Sign out">
+        </fieldset>
+      </form>
+
+      <form id='create-new-game'>
+        <fieldset>
+          <legend>New Game</legend>
+          <input type="submit" name="submit" value="New Game">
+        </fieldset>
+      </form>
+
+
+      <form id="update-game">
+        <fieldset>
+          <legend>Update Game</legend>
+          <input name="game[cell][index]" type="text" placeholder="Index">
+          <input name="game[cell][value]" type="text" placeholder="Value x or o">
+          <input name="game[over]" type="text" placeholder="Game over: true or false">
+          <input type="submit" name="submit" value="Update Game">
         </fieldset>
       </form>
     </body>
