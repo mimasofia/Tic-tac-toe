@@ -43,7 +43,7 @@ const signOut = function (data) {
 
 const createGame = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/games',
+    url: config.apiOrigin + '/games/',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -52,9 +52,9 @@ const createGame = function (data) {
   })
 }
 
-const showGames = function (data) {
+const showGame = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/games',
+    url: config.apiOrigin + '/games/' + data.game.id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -63,9 +63,9 @@ const showGames = function (data) {
   })
 }
 
-const showOneGame = function (id) {
+const showOneGame = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/games/' + id,
+    url: config.apiOrigin + '/games/' + data.game.id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -73,13 +73,25 @@ const showOneGame = function (id) {
   })
 }
 
-const updateGame = function (id) {
+const showAllGames = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/games/' + id,
+    url: config.apiOrigin + '/games/',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+const updateGame = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + data.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    }
+    },
+    data
   })
 }
 
@@ -90,6 +102,7 @@ module.exports = {
   signOut,
   createGame,
   showOneGame,
-  showGames,
-  updateGame
+  showGame,
+  updateGame,
+  showAllGames
 }
