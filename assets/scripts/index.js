@@ -4,6 +4,7 @@ const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const index = require('./game/games')
 const authEvents = require('./auth/events')
+const store = require('./store')
 
 $(() => {
   setAPIOrigin(location, config)

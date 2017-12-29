@@ -47,8 +47,15 @@ const signOutFailure = function (error) {
 
 const createGameSuccess = function (data) {
   console.log(data)
-  console.log('New game created')
+  store.user = data.user
+  console.log(data.game.id)
   $('.game-messages').text('New game created')
+  const gameHtml = (
+    `<ul>
+    <li>Game Id: ${data.game.id}</li>
+    </ul>`
+  )
+  $('#content').append(gameHtml)
 }
 
 const createGameFailure = function (error) {
@@ -57,7 +64,9 @@ const createGameFailure = function (error) {
 }
 const showGameSuccess = function (data) {
   console.log(data)
-  console.log('Success getting games')
+  // data.game.cells is the emmpty array in api maybe i can push the
+  // dome stuff in the game.js to this arraty like .push(data.game.cells)
+  console.log(data.game.cells)
   $('.game-messages').text('Success getting game')
 }
 
@@ -79,7 +88,8 @@ const showAllGamesFailure = function (error) {
 
 const updateGameSuccess = function (data) {
   console.log(data)
-  console.log('Success getting all games')
+  console.log(data.game.cells)
+  // has to be a way to display this in the dom
   $('.games-messages').text('Success updating game')
 }
 

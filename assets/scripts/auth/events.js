@@ -65,10 +65,13 @@ const onShowAllGames = function (event) {
 
 const onUpdateGame = function (event) {
   const data = getFormFields(this)
+  // i want it to get data from games.js as well
   event.preventDefault()
+  console.log(data)
   api.updateGame(data)
     .then(ui.updateGameSuccess)
     .catch(ui.updateGameFailure)
+  $('#update-game').find('input:text, input:password, select, textarea').val('')
 }
 
 const addHandlers = function () {

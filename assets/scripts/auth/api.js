@@ -85,6 +85,7 @@ const showAllGames = function (data) {
 }
 
 const updateGame = function (data) {
+  console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/games/' + data.game.id,
     method: 'PATCH',
