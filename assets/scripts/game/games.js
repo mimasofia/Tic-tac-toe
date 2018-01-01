@@ -1,5 +1,10 @@
 'use strict'
 
+const api = require('../auth/api')
+const ui = require('../auth/ui')
+const config = require('../config')
+const store = require('../store')
+
 const ticTacToe = {
   turn: 'x',
   cells: ['', '', '', '', '', '', '', '', ''],
@@ -227,14 +232,28 @@ const checkForWinner = function () {
 // trying some stuff out
 const afterSign = function () {
   $('#create-new-game').on('submit', clearBoard)
-  $('#password-change').removeClass('hide')
-  $('#update-game').removeClass('hide')
-  $('#sign-out').removeClass('hide')
+  // $('#password-change').removeClass('hide')
+  // $('#update-game').removeClass('hide')
+  // $('#sign-out').removeClass('hide')
+  // $('#sign-out').removeClass('hide')
+  // $('#show-all-games').removeClass('hide')
+  // $('#show-game').removeClass('hide')
+  // $('#create-new-game').removeClass('hide')
+  // $('#sing-in').addClass('hide')
+  // $('#sign-up').addClass('hide')
 }
-$('#sign-in, #sing-up').on('submit', afterSign)
+$('#sign-in, #sign-up').on('submit', afterSign)
 
- const beforeSign = function () {
+ // const beforeSign = function () {
   $('#password-change').addClass('hide')
   $('#update-game').addClass('hide')
   $('#sign-out').addClass('hide')
+  $('#show-all-games').addClass('hide')
+  $('#show-game').addClass('hide')
+  $('#create-new-game').addClass('hide')
+
+// }
+
+module.exports = {
+  clearBoard
 }

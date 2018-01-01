@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+// const game = require('./games/game')
 
 const signUpSuccess = function (data) {
   console.log(data)
@@ -17,6 +18,15 @@ const signInSuccess = function (data) {
   // want to save this have token and the user d
   // store now has the user stuff after it runs even if the file is emptty
   store.user = data.user
+  $('#password-change').removeClass('hide')
+  $('#update-game').removeClass('hide')
+  $('#sign-out').removeClass('hide')
+  $('#sign-out').removeClass('hide')
+  $('#show-all-games').removeClass('hide')
+  $('#show-game').removeClass('hide')
+  $('#create-new-game').removeClass('hide')
+  $('#sing-in').addClass('hide')
+  $('#sign-up').addClass('hide')
 }
 
 const signInFailure = function (error) {

@@ -4,6 +4,7 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const api = require('./api')
 const ui = require('./ui')
+const store = require('../store')
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
@@ -19,6 +20,10 @@ const onSignIn = function (event) {
   event.preventDefault()
   api.signIn(data)
     .then(ui.signInSuccess)
+    .then(function () {
+      api.createGame()
+      store.game = data.game
+    })
     .catch(ui.signInFailure)
   $('#sign-in').find('input:text, input:password, select, textarea').val('')
 }
