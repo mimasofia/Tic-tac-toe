@@ -40,50 +40,12 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOotFailure)
 }
-//
-const onCreateGame = function (event) {
-  event.preventDefault()
-  api.createGame()
-    .then(ui.createGameSuccess)
-    .catch(ui.createGameFailure)
-}
-
-const onShowGame = function (event) {
-  const data = getFormFields(this)
-  event.preventDefault()
-  api.showGame(data)
-    .then(ui.showGameSuccess)
-    .catch(ui.showGameFailure)
-}
-
-const onShowAllGames = function (event) {
-  const data = getFormFields(this)
-  event.preventDefault()
-  api.showAllGames(data)
-    .then(ui.showAllGamesSuccess)
-    .catch(ui.showAllGamesFailure)
-}
-
-const onUpdateGame = function (event) {
-  const data = getFormFields(this)
-  // i want it to get data from games.js as well
-  event.preventDefault()
-  console.log(data)
-  api.updateGame(data)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFailure)
-  $('#update-game').find('input:text, input:password, select, textarea').val('')
-}
 
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#password-change').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('#create-new-game').on('submit', onCreateGame)
-  $('#show-game').on('submit', onShowGame)
-  $('#show-all-games').on('submit', onShowAllGames)
-  $('#update-game').on('submit', onUpdateGame)
 }
 
 module.exports = {

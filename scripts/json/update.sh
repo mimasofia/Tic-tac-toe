@@ -1,7 +1,10 @@
 #!/bin/sh
 
 # sh scripts/examples/update.sh
-curl "https://aqueous-atoll-85096.herokuapp.com/games/${ID}" \
+API="${API_ORIGIN:-http://tic-tac-toe.wdibos.com}"
+URL_PATH="/games/${ID}"
+
+curl "${API}${URL_PATH}" \
   --include \
   --request PATCH \
   --header "Content-Type: application/json" \

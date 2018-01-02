@@ -1,15 +1,16 @@
 'use strict'
 
-const api = require('../auth/api')
-const ui = require('../auth/ui')
-const config = require('../config')
+const gameApi = require('./gameApi')
+const gameUi = require('./gameUi')
 const store = require('../store')
 
 const ticTacToe = {
-  turn: 'x',
-  cells: ['', '', '', '', '', '', '', '', ''],
-  // cells: data.game.cells, this is were the datais store in api or something
-  over: false
+  game: {
+    id: ''
+  }
+  // turn: 'x',
+  // cells: ['', '', '', '', '', '', '', '', ''],
+  // over: false
 }
 
 const changeToken = function () {
@@ -30,6 +31,7 @@ const clearBoard = function () {
   $('.game-messages').empty()
 }
 
+
 $('#cellZero').on('click', function () {
   // this clears any message that was from a previous click when you click on a new cell
   $('.game-messages').empty()
@@ -41,8 +43,6 @@ $('#cellZero').on('click', function () {
     $('#cellZero').text(ticTacToe.turn)
     // counter add one each tme there is a click to check if there is a tie
     counter++
-    updateGame()
-    // after that it changes the token so that the next time you click it will be 'o'
     changeToken()
     console.log(ticTacToe.cells)
     // this shows whos turn it is next
@@ -50,6 +50,7 @@ $('#cellZero').on('click', function () {
     // then we tell it to check for winner after every play
     checkForWinner()
     // this is specific to the topleft cell and only works for that one
+    // after that it changes the token so that the next time you click it will be 'o'
   } else {
     $('.game-messages').text('Choose another spot')
   }
@@ -200,10 +201,11 @@ const checkForWinner = function () {
     (ticTacToe.cells[2] === 'x' && ticTacToe.cells[4] === 'x' && ticTacToe.cells[6] === 'x')) {
     console.log('Player X is the winner')
     $('.game-messages').text('Player X won')
-    // api.updateGame()
     // have to change the win to true so that the end function can work
     ticTacToe.over = true
     // then have to envoke the end game function
+    gameApi.updateGame(store.game)
+    console.log(store.game)
     endGame()
     // this clears the board however does it too fast need to add a dalay ir something
     // clearBoard()
@@ -220,6 +222,8 @@ const checkForWinner = function () {
     $('.game-messages').text('Player O won')
     // api.updateGame()
     ticTacToe.over = true
+    gameApi.updateGame(store.game)
+    console.log(store.game)
     endGame()
     // clearBoard()
   } else if (counter === 9) {
@@ -228,6 +232,8 @@ const checkForWinner = function () {
     // if they all get filled up that means there was no winner so its a tie
     console.log('its a tie')
     $('.game-messages').text('Its a tie')
+    gameApi.updateGame(store.game)
+    console.log(store.game)
     endGame()
     // clearBoard()
   }
