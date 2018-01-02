@@ -20,10 +20,6 @@ const onSignIn = function (event) {
   event.preventDefault()
   api.signIn(data)
     .then(ui.signInSuccess)
-    .then(function () {
-      api.createGame()
-      store.game = data.game
-    })
     .catch(ui.signInFailure)
   $('#sign-in').find('input:text, input:password, select, textarea').val('')
 }

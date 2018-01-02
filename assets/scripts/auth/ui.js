@@ -1,6 +1,6 @@
 'use strict'
 const store = require('../store')
-// const game = require('./games/game')
+const game = require('../game/games')
 
 const signUpSuccess = function (data) {
   console.log(data)
@@ -21,11 +21,10 @@ const signInSuccess = function (data) {
   $('#password-change').removeClass('hide')
   $('#update-game').removeClass('hide')
   $('#sign-out').removeClass('hide')
-  $('#sign-out').removeClass('hide')
   $('#show-all-games').removeClass('hide')
   $('#show-game').removeClass('hide')
   $('#create-new-game').removeClass('hide')
-  $('#sing-in').addClass('hide')
+  $('#sign-in').addClass('hide')
   $('#sign-up').addClass('hide')
 }
 
@@ -57,7 +56,6 @@ const signOutFailure = function (error) {
 
 const createGameSuccess = function (data) {
   console.log(data)
-  store.user = data.user
   console.log(data.game.id)
   $('.game-messages').text('New game created')
   const gameHtml = (
@@ -77,6 +75,15 @@ const showGameSuccess = function (data) {
   // data.game.cells is the emmpty array in api maybe i can push the
   // dome stuff in the game.js to this arraty like .push(data.game.cells)
   console.log(data.game.cells)
+  $('#cellZero').text(data.game.cells[0])
+  $('#cellOne').text(data.game.cells[1])
+  $('#cellTwo').text(data.game.cells[2])
+  $('#cellThree').text(data.game.cells[3])
+  $('#cellFour').text(data.game.cells[4])
+  $('#cellFive').text(data.game.cells[5])
+  $('#cellSix').text(data.game.cells[6])
+  $('#cellSeven').text(data.game.cells[7])
+  $('#cellEight').text(data.game.cells[8])
   $('.game-messages').text('Success getting game')
 }
 
@@ -99,8 +106,18 @@ const showAllGamesFailure = function (error) {
 const updateGameSuccess = function (data) {
   console.log(data)
   console.log(data.game.cells)
-  // has to be a way to display this in the dom
   $('.games-messages').text('Success updating game')
+  // can get it to display on the board when the update is Successfull
+  // but its still not linked with the other board in games.js
+  $('#cellZero').text(data.game.cells[0])
+  $('#cellOne').text(data.game.cells[1])
+  $('#cellTwo').text(data.game.cells[2])
+  $('#cellThree').text(data.game.cells[3])
+  $('#cellFour').text(data.game.cells[4])
+  $('#cellFive').text(data.game.cells[5])
+  $('#cellSix').text(data.game.cells[6])
+  $('#cellSeven').text(data.game.cells[7])
+  $('#cellEight').text(data.game.cells[8])
 }
 
 const updateGameFailure = function (error) {

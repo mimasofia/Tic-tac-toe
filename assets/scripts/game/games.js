@@ -41,6 +41,7 @@ $('#cellZero').on('click', function () {
     $('#cellZero').text(ticTacToe.turn)
     // counter add one each tme there is a click to check if there is a tie
     counter++
+    updateGame()
     // after that it changes the token so that the next time you click it will be 'o'
     changeToken()
     console.log(ticTacToe.cells)
@@ -199,6 +200,7 @@ const checkForWinner = function () {
     (ticTacToe.cells[2] === 'x' && ticTacToe.cells[4] === 'x' && ticTacToe.cells[6] === 'x')) {
     console.log('Player X is the winner')
     $('.game-messages').text('Player X won')
+    // api.updateGame()
     // have to change the win to true so that the end function can work
     ticTacToe.over = true
     // then have to envoke the end game function
@@ -216,6 +218,7 @@ const checkForWinner = function () {
     (ticTacToe.cells[2] === 'o' && ticTacToe.cells[4] === 'o' && ticTacToe.cells[6] === 'o')) {
     console.log('Player O is the winner')
     $('.game-messages').text('Player O won')
+    // api.updateGame()
     ticTacToe.over = true
     endGame()
     // clearBoard()
@@ -230,30 +233,15 @@ const checkForWinner = function () {
   }
 }
 // trying some stuff out
-const afterSign = function () {
-  $('#create-new-game').on('submit', clearBoard)
-  // $('#password-change').removeClass('hide')
-  // $('#update-game').removeClass('hide')
-  // $('#sign-out').removeClass('hide')
-  // $('#sign-out').removeClass('hide')
-  // $('#show-all-games').removeClass('hide')
-  // $('#show-game').removeClass('hide')
-  // $('#create-new-game').removeClass('hide')
-  // $('#sing-in').addClass('hide')
-  // $('#sign-up').addClass('hide')
-}
-$('#sign-in, #sign-up').on('submit', afterSign)
+$('#create-new-game').on('submit', clearBoard)
 
- // const beforeSign = function () {
-  $('#password-change').addClass('hide')
-  $('#update-game').addClass('hide')
-  $('#sign-out').addClass('hide')
-  $('#show-all-games').addClass('hide')
-  $('#show-game').addClass('hide')
-  $('#create-new-game').addClass('hide')
-
-// }
+$('#password-change').addClass('hide')
+$('#update-game').addClass('hide')
+$('#sign-out').addClass('hide')
+$('#show-all-games').addClass('hide')
+$('#show-game').addClass('hide')
+$('#create-new-game').addClass('hide')
 
 module.exports = {
-  clearBoard
+  ticTacToe
 }
