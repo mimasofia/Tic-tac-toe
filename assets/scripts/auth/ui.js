@@ -3,17 +3,17 @@ const store = require('../store')
 const game = require('../game/games')
 
 const signUpSuccess = function (data) {
-  console.log(data)
+  // console.log(data)
   $('.ui-messages').text('Successfully signed up')
 }
 
-const signUpFailure = function (error) {
-  console.error(error)
+const signUpFailure = function () {
+  // console.error(error)
   $('.ui-messages').text('Error on sign up')
 }
 
 const signInSuccess = function (data) {
-  console.log('data: ', data)
+  // console.log('data: ', data)
   $('.ui-messages').text('Successfully signed in')
   // want to save this have token and the user d
   // store now has the user stuff after it runs even if the file is emptty
@@ -29,23 +29,23 @@ const signInSuccess = function (data) {
   // $('#show-game').removeClass('hide')
 }
 
-const signInFailure = function (error) {
-  console.error(error)
+const signInFailure = function () {
+  // console.error(error)
   $('.ui-messages').text('Error on sign in')
 }
 
 const changePasswordSuccess = function () {
-  console.log('Successfully changed password')
+  // console.log('Successfully changed password')
   $('.ui-messages').text('Successfully changed password')
 }
 
-const changePasswordFailure = function (error) {
-  console.log(error)
+const changePasswordFailure = function () {
+  // console.log()
   $('.ui-messages').text('Error change password')
 }
 
 const signOutSuccess = function () {
-  console.log('Successfully signed out')
+  // console.log('Successfully signed out')
   $('.ui-messages').text('Successfully signed out')
   store.user = null
   $('#password-change').addClass('hide')
@@ -59,10 +59,14 @@ const signOutSuccess = function () {
   $('#show-game-over-true').addClass('hide')
   $('.game-block').addClass('hide')
   $('.game-messages').addClass('hide')
+  $('#content').empty()
+  $('#content-all').empty()
+  $('#one-game').empty()
+  $('#finished-game').empty()
 }
 
-const signOutFailure = function (error) {
-  console.log(error)
+const signOutFailure = function () {
+  // console.log(error)
   $('.ui-messages').text('Error on sign out')
 }
 

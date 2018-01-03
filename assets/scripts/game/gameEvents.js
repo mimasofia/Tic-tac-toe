@@ -33,8 +33,8 @@ const onShowAllGames = function (event) {
 const onUpdateGame = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('hit')
-  console.log(data)
+  // console.log('hit')
+  // console.log(data)
   gameApi.updateGame(data)
     .then(gameUi.updateGameSuccess)
     .catch(gameUi.updateGameFailure)

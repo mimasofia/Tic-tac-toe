@@ -39,8 +39,8 @@ const clearBoard = function () {
 // this is the api call that updates the object cells in the api
 // had to put it here becuase it wasn't working in the api file and the require wasn't working
 const updateGame = function (index, turn) {
-  console.log(store.game)
-  console.log('THIS IS ' + store.game.id)
+  // console.log(store.game)
+  // console.log('THIS IS ' + store.game.id)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -253,7 +253,7 @@ const checkForWinner = function () {
     (ticTacToe.cells[2] === 'x' && ticTacToe.cells[5] === 'x' && ticTacToe.cells[8] === 'x') ||
     (ticTacToe.cells[0] === 'x' && ticTacToe.cells[4] === 'x' && ticTacToe.cells[8] === 'x') ||
     (ticTacToe.cells[2] === 'x' && ticTacToe.cells[4] === 'x' && ticTacToe.cells[6] === 'x')) {
-    console.log('Player X is the winner')
+    // console.log('Player X is the winner')
     $('.game-messages').text('Player X won! Game over! Please start New Game')
     // have to change the win to true so that the end function can work
     ticTacToe.over = true
@@ -272,7 +272,7 @@ const checkForWinner = function () {
     (ticTacToe.cells[2] === 'o' && ticTacToe.cells[5] === 'o' && ticTacToe.cells[8] === 'o') ||
     (ticTacToe.cells[0] === 'o' && ticTacToe.cells[4] === 'o' && ticTacToe.cells[8] === 'o') ||
     (ticTacToe.cells[2] === 'o' && ticTacToe.cells[4] === 'o' && ticTacToe.cells[6] === 'o')) {
-    console.log('Player O is the winner')
+    // console.log('Player O is the winner')
     $('.game-messages').text('Player O won! Game over! Please start New Game')
     // api.updateGame()
     ticTacToe.over = true
