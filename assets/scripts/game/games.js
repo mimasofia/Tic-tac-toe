@@ -36,7 +36,8 @@ const clearBoard = function () {
   $('.game-board').empty()
   $('.game-messages').empty()
 }
-
+// this is the api call that updates the object cells in the api
+// had to put it here becuase it wasn't working in the api file and the require wasn't working
 const updateGame = function (index, turn) {
   console.log(store.game)
   console.log('THIS IS ' + store.game.id)
@@ -58,18 +59,6 @@ const updateGame = function (index, turn) {
   })
 }
 
-// const allowClickAgain = function () {
-//   $('#cellZero').removeClass('no-click')
-//   $('#cellOne').removeClass('no-click')
-//   $('#cellTwo').removeClass('no-click')
-//   $('#cellThree').removeClass('no-click')
-//   $('#cellFour').removeClass('no-click')
-//   $('#cellFive').removeClass('no-click')
-//   $('#cellSix').removeClass('no-click')
-//   $('#cellSeven').removeClass('no-click')
-//   $('#cellEight').removeClass('no-click')
-// }
-
 $('#cellZero').on('click', function (event) {
   // this clears any message that was from a previous click when you click on a new cell
   $('.game-messages').empty()
@@ -81,10 +70,10 @@ $('#cellZero').on('click', function (event) {
     $('#cellZero').text(ticTacToe.turn)
     // counter add one each tme there is a click to check if there is a tie
     counter++
+    // updateGame send the info to the api to save it there and be ablet to retrieve later
+    // specific to each index
     updateGame(0)
-    console.log('LOOK HERE' + ticTacToe)
     changeToken()
-    // console.log(ticTacToe.cells)
     // this shows whos turn it is next
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     // then we tell it to check for winner after every play
@@ -92,8 +81,11 @@ $('#cellZero').on('click', function (event) {
     // this is specific to the topleft cell and only works for that one
     // after that it changes the token so that the next time you click it will be 'o'
   } else if (ticTacToe.cells !== '') {
+    // this is so that you cannot choose a spot that already has something in it
     $('.game-messages').text('Choose another spot')
   } else {
+    // this is so that if you keep clicking after endGame function it doesnt let you click more
+    // just displays this message
     $('.game-messages').text('Please start New Game')
   }
 })
@@ -245,10 +237,8 @@ $('#cellEight').on('click', function (event) {
 const endGame = function () {
   // this is only true when there is a winner
   if (ticTacToe.over === true) {
+    // this just clears the object so that you can start a new game and click again
     ticTacToe.cells = ''
-    // $('.game-messages').text('Game over! Please start New Game')
-    // this is so you cannot keep playing after there is a winner, you cannot click
-    // it also doesnt allow you to play again when you click the button 'new game'
   }
 }
 
@@ -267,9 +257,9 @@ const checkForWinner = function () {
     $('.game-messages').text('Player X won! Game over! Please start New Game')
     // have to change the win to true so that the end function can work
     ticTacToe.over = true
-    // then have to envoke the end game function
+    // this update if there is a true or false and if anything else has changed/ who won
     updateGame()
-    console.log(store.game)
+    // then have to envoke the end game function
     endGame()
     // this clears the board however does it too fast need to add a dalay ir something
     // clearBoard()
@@ -287,31 +277,31 @@ const checkForWinner = function () {
     // api.updateGame()
     ticTacToe.over = true
     updateGame()
-    console.log(store.game)
     endGame()
     // clearBoard()
   } else if (counter === 9) {
     ticTacToe.over = true
     // every time there is a click the counter goes up by 1, since there are 9 spots
     // if they all get filled up that means there was no winner so its a tie
-    console.log('its a tie')
     $('.game-messages').text('Its a tie. Please start a New Game')
     updateGame()
-    console.log(store.game)
     endGame()
     // clearBoard()
   }
 }
 
-// trying some stuff out
+// when you create a new game this clears the text and object
 $('#create-new-game').on('submit', clearBoard)
-
+// these are to hide the forms depending on if you are signed in or not
 $('#password-change').addClass('hide')
 $('#update-game').addClass('hide')
 $('#sign-out').addClass('hide')
 $('#show-all-games').addClass('hide')
 $('#show-game').addClass('hide')
 $('#create-new-game').addClass('hide')
+$('#show-game-over-true').addClass('hide')
+$('.game-block').addClass('hide')
+$('.game-messages').addClass('hide')
 
 module.exports = {
   ticTacToe

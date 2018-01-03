@@ -19,6 +19,7 @@ const onShowGame = function (event) {
   gameApi.showGame(data)
     .then(gameUi.showGameSuccess)
     .catch(gameUi.showGameFailure)
+  $('#show-game').find('input:text, input:password, select, textarea').val('')
 }
 
 const onShowAllGames = function (event) {
@@ -31,7 +32,6 @@ const onShowAllGames = function (event) {
 
 const onUpdateGame = function (event) {
   const data = getFormFields(this)
-  // i want it to get data from games.js as well
   event.preventDefault()
   console.log('hit')
   console.log(data)
@@ -40,11 +40,21 @@ const onUpdateGame = function (event) {
     .catch(gameUi.updateGameFailure)
   $('#update-game').find('input:text, input:password, select, textarea').val('')
 }
+
+const onShowGameOverTrue = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  gameApi.showGameOverTrue(data)
+    .then(gameUi.showGameOverTrueSuccess)
+    .catch(gameUi.showGameOverTrueFailure)
+}
+
 const addHandlers = function () {
   $('#create-new-game').on('submit', onCreateGame)
   $('#show-game').on('submit', onShowGame)
   $('#show-all-games').on('submit', onShowAllGames)
   $('#update-game').on('submit', onUpdateGame)
+  $('#show-game-over-true').on('submit', onShowGameOverTrue)
 }
 
 module.exports = {

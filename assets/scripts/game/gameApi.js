@@ -46,6 +46,17 @@ const showAllGames = function (data) {
   })
 }
 
+const showGameOverTrue = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/games?over=true',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 // const updateGame = function (index, turn) {
 //   console.log(store.game)
 //   console.log('THIS IS ' + store.game.id)
@@ -72,5 +83,6 @@ module.exports = {
   showOneGame,
   showGame,
   // updateGame,
-  showAllGames
+  showAllGames,
+  showGameOverTrue
 }

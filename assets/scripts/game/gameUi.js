@@ -14,6 +14,12 @@ const createGameSuccess = function (data) {
     </ul>`
   )
   $('#content').append(gameHtml)
+  $('.game-block').removeClass('hide')
+  $('.game-messages').removeClass('hide')
+  $('#show-all-games').removeClass('hide')
+  $('#show-game').removeClass('hide')
+  $('#create-new-game').removeClass('hide')
+  $('#content-all').text('')
 }
 
 const createGameFailure = function (error) {
@@ -31,35 +37,26 @@ const showGameSuccess = function (data) {
 
 const showGameFailure = function (error) {
   console.log(error)
-  $('.games-messages').text('Error getting game')
+  $('.game-messages').text('Error getting game. Please provide game ID')
 }
 
 const showAllGamesSuccess = function (data) {
-  console.log(data)
-  console.log('Success getting all games')
-  $('.games-messages').text('Success getting all games')
+  for (let i = 0; i < data.games.length; i++) {
+    console.log(data.games[i])
+    $('#content-all').text('-Number of games played ' + [i])
+  }
+  $('.game-messages').text('Success getting number of games')
 }
 
 const showAllGamesFailure = function (error) {
   console.log(error)
-  $('.game-messages').text('Error getting all games')
+  $('.game-messages').text('Error getting number of games')
 }
 
 const updateGameSuccess = function (data) {
   console.log(data)
   console.log(data.game.cells)
-  $('.games-messages').text('Success updating game')
-  // can get it to display on the board when the update is Successfull
-  // but its still not linked with the other board in games.js
-  // $('#cellZero').text(data.game.cells[0])
-  // $('#cellOne').text(data.game.cells[1])
-  // $('#cellTwo').text(data.game.cells[2])
-  // $('#cellThree').text(data.game.cells[3])
-  // $('#cellFour').text(data.game.cells[4])
-  // $('#cellFive').text(data.game.cells[5])
-  // $('#cellSix').text(data.game.cells[6])
-  // $('#cellSeven').text(data.game.cells[7])
-  // $('#cellEight').text(data.game.cells[8])
+  $('.game-messages').text('Success updating game')
 }
 
 const updateGameFailure = function (error) {
@@ -67,6 +64,19 @@ const updateGameFailure = function (error) {
   $('.game-messages').text('Error updating game')
 }
 
+const showGameOverTrueSuccess = function (data) {
+  console.log(data)
+  for (let i = 0; i < data.games.length; i++) {
+    console.log(data.games[i])
+    $('#content-all').text('-Number of games finished ' + [i])
+  }
+  $('.game-messages').text('Success getting all finished games')
+}
+
+const showGameOverTrueFailure = function (error) {
+  console.log(error)
+  $('.game-messages').text('Error getting finished games')
+}
 module.exports = {
   createGameSuccess,
   createGameFailure,
@@ -75,5 +85,7 @@ module.exports = {
   showAllGamesSuccess,
   showAllGamesFailure,
   updateGameSuccess,
-  updateGameFailure
+  updateGameFailure,
+  showGameOverTrueSuccess,
+  showGameOverTrueFailure
 }
