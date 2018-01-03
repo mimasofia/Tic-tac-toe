@@ -3,11 +3,11 @@ const store = require('../store')
 const game = require('../game/games')
 
 const createGameSuccess = function (data) {
+  // $('.game-board').removeClass('no-click')
   console.log('this is data.game.id ' + data.game.id)
   store['game'] = data.game
   console.log(store)
   $('.game-messages').text('New game created')
-  $('.game-board').removeClass('no-click')
   const gameHtml = (
     `<ul>
     <li>Game Id: ${data.game.id}</li>
@@ -25,15 +25,7 @@ const showGameSuccess = function (data) {
   // data.game.cells is the emmpty array in api maybe i can push the
   // dome stuff in the game.js to this arraty like .push(data.game.cells)
   console.log(data.game.cells)
-  // $('#cellZero').text(data.game.cells[0])
-  // $('#cellOne').text(data.game.cells[1])
-  // $('#cellTwo').text(data.game.cells[2])
-  // $('#cellThree').text(data.game.cells[3])
-  // $('#cellFour').text(data.game.cells[4])
-  // $('#cellFive').text(data.game.cells[5])
-  // $('#cellSix').text(data.game.cells[6])
-  // $('#cellSeven').text(data.game.cells[7])
-  // $('#cellEight').text(data.game.cells[8])
+
   $('.game-messages').text('Success getting game')
 }
 

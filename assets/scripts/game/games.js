@@ -58,6 +58,18 @@ const updateGame = function (index, turn) {
   })
 }
 
+// const allowClickAgain = function () {
+//   $('#cellZero').removeClass('no-click')
+//   $('#cellOne').removeClass('no-click')
+//   $('#cellTwo').removeClass('no-click')
+//   $('#cellThree').removeClass('no-click')
+//   $('#cellFour').removeClass('no-click')
+//   $('#cellFive').removeClass('no-click')
+//   $('#cellSix').removeClass('no-click')
+//   $('#cellSeven').removeClass('no-click')
+//   $('#cellEight').removeClass('no-click')
+// }
+
 $('#cellZero').on('click', function (event) {
   // this clears any message that was from a previous click when you click on a new cell
   $('.game-messages').empty()
@@ -79,8 +91,10 @@ $('#cellZero').on('click', function (event) {
     checkForWinner()
     // this is specific to the topleft cell and only works for that one
     // after that it changes the token so that the next time you click it will be 'o'
-  } else {
+  } else if (ticTacToe.cells !== '') {
     $('.game-messages').text('Choose another spot')
+  } else {
+    $('.game-messages').text('Please start New Game')
   }
 })
 
@@ -95,8 +109,10 @@ $('#cellOne').on('click', function (event) {
     // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
-  } else {
+  } else if (ticTacToe.cells !== '') {
     $('.game-messages').text('Choose another spot')
+  } else {
+    $('.game-messages').text('Please start New Game')
   }
 })
 
@@ -111,8 +127,10 @@ $('#cellTwo').on('click', function (event) {
     // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
-  } else {
+  } else if (ticTacToe.cells !== '') {
     $('.game-messages').text('Choose another spot')
+  } else {
+    $('.game-messages').text('Please start New Game')
   }
 })
 
@@ -127,8 +145,10 @@ $('#cellThree').on('click', function (event) {
     // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
-  } else {
+  } else if (ticTacToe.cells !== '') {
     $('.game-messages').text('Choose another spot')
+  } else {
+    $('.game-messages').text('Please start New Game')
   }
 })
 
@@ -143,8 +163,10 @@ $('#cellFour').on('click', function (event) {
     // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
-  } else {
+  } else if (ticTacToe.cells !== '') {
     $('.game-messages').text('Choose another spot')
+  } else {
+    $('.game-messages').text('Please start New Game')
   }
 })
 
@@ -159,8 +181,10 @@ $('#cellFive').on('click', function (event) {
     // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
-  } else {
+  } else if (ticTacToe.cells !== '') {
     $('.game-messages').text('Choose another spot')
+  } else {
+    $('.game-messages').text('Please start New Game')
   }
 })
 
@@ -175,8 +199,10 @@ $('#cellSix').on('click', function (event) {
     // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
-  } else {
+  } else if (ticTacToe.cells !== '') {
     $('.game-messages').text('Choose another spot')
+  } else {
+    $('.game-messages').text('Please start New Game')
   }
 })
 
@@ -191,8 +217,10 @@ $('#cellSeven').on('click', function (event) {
     // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
-  } else {
+  } else if (ticTacToe.cells !== '') {
     $('.game-messages').text('Choose another spot')
+  } else {
+    $('.game-messages').text('Please start New Game')
   }
 })
 
@@ -207,20 +235,20 @@ $('#cellEight').on('click', function (event) {
     // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
-  } else {
+  } else if (ticTacToe.cells !== '') {
     $('.game-messages').text('Choose another spot')
+  } else {
+    $('.game-messages').text('Please start New Game')
   }
 })
 
 const endGame = function () {
   // this is only true when there is a winner
   if (ticTacToe.over === true) {
-    console.log('Restart Game')
+    ticTacToe.cells = ''
+    // $('.game-messages').text('Game over! Please start New Game')
     // this is so you cannot keep playing after there is a winner, you cannot click
     // it also doesnt allow you to play again when you click the button 'new game'
-    $('.no-click').off('click')
-  } else {
-    $('.game-messages').text('Choose another spot')
   }
 }
 
@@ -236,7 +264,7 @@ const checkForWinner = function () {
     (ticTacToe.cells[0] === 'x' && ticTacToe.cells[4] === 'x' && ticTacToe.cells[8] === 'x') ||
     (ticTacToe.cells[2] === 'x' && ticTacToe.cells[4] === 'x' && ticTacToe.cells[6] === 'x')) {
     console.log('Player X is the winner')
-    $('.game-messages').text('Player X won')
+    $('.game-messages').text('Player X won! Game over! Please start New Game')
     // have to change the win to true so that the end function can work
     ticTacToe.over = true
     // then have to envoke the end game function
@@ -255,7 +283,7 @@ const checkForWinner = function () {
     (ticTacToe.cells[0] === 'o' && ticTacToe.cells[4] === 'o' && ticTacToe.cells[8] === 'o') ||
     (ticTacToe.cells[2] === 'o' && ticTacToe.cells[4] === 'o' && ticTacToe.cells[6] === 'o')) {
     console.log('Player O is the winner')
-    $('.game-messages').text('Player O won')
+    $('.game-messages').text('Player O won! Game over! Please start New Game')
     // api.updateGame()
     ticTacToe.over = true
     updateGame()
@@ -267,13 +295,14 @@ const checkForWinner = function () {
     // every time there is a click the counter goes up by 1, since there are 9 spots
     // if they all get filled up that means there was no winner so its a tie
     console.log('its a tie')
-    $('.game-messages').text('Its a tie')
+    $('.game-messages').text('Its a tie. Please start a New Game')
     updateGame()
     console.log(store.game)
     endGame()
     // clearBoard()
   }
 }
+
 // trying some stuff out
 $('#create-new-game').on('submit', clearBoard)
 
