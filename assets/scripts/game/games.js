@@ -3,15 +3,21 @@
 const gameApi = require('./gameApi')
 const gameUi = require('./gameUi')
 const store = require('../store')
+const config = require('../config')
 
 const ticTacToe = {
-  game: {
-    id: ''
-  }
-  // turn: 'x',
-  // cells: ['', '', '', '', '', '', '', '', ''],
-  // over: false
+  // game: {
+  //   cell: {
+  //     'index': index,
+  //     value: 'x'
+  //   },
+  //   over: false
+  // },
+  // id: ''
 }
+// turn: 'x',
+// cells: ['', '', '', '', '', '', '', '', ''],
+// over: false
 
 const changeToken = function () {
   // this function starts with an 'x' becuase that is what the variable turn is
@@ -31,8 +37,28 @@ const clearBoard = function () {
   $('.game-messages').empty()
 }
 
+const updateGame = function (index, turn) {
+  console.log(store.game)
+  console.log('THIS IS ' + store.game.id)
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'game': {
+        'cell': {
+          'index': index,
+          'value': ticTacToe.turn
+        },
+        'over': ticTacToe.over
+      }
+    }
+  })
+}
 
-$('#cellZero').on('click', function () {
+$('#cellZero').on('click', function (event) {
   // this clears any message that was from a previous click when you click on a new cell
   $('.game-messages').empty()
   // makes it so that the function only runs if there is an empty spot there
@@ -43,8 +69,10 @@ $('#cellZero').on('click', function () {
     $('#cellZero').text(ticTacToe.turn)
     // counter add one each tme there is a click to check if there is a tie
     counter++
+    updateGame(0)
+    console.log('LOOK HERE' + ticTacToe)
     changeToken()
-    console.log(ticTacToe.cells)
+    // console.log(ticTacToe.cells)
     // this shows whos turn it is next
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     // then we tell it to check for winner after every play
@@ -56,14 +84,15 @@ $('#cellZero').on('click', function () {
   }
 })
 
-$('#cellOne').on('click', function () {
+$('#cellOne').on('click', function (event) {
   $('.game-messages').empty()
   if (ticTacToe.cells[1] === '') {
     ticTacToe.cells.splice(1, 1, ticTacToe.turn)
     $('#cellOne').text(ticTacToe.turn)
     counter++
+    updateGame(1)
     changeToken()
-    console.log(ticTacToe.cells)
+    // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
@@ -71,14 +100,15 @@ $('#cellOne').on('click', function () {
   }
 })
 
-$('#cellTwo').on('click', function () {
+$('#cellTwo').on('click', function (event) {
   $('.game-messages').empty()
   if (ticTacToe.cells[2] === '') {
     ticTacToe.cells.splice(2, 1, ticTacToe.turn)
     $('#cellTwo').text(ticTacToe.turn)
     counter++
+    updateGame(2)
     changeToken()
-    console.log(ticTacToe.cells)
+    // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
@@ -86,14 +116,15 @@ $('#cellTwo').on('click', function () {
   }
 })
 
-$('#cellThree').on('click', function () {
+$('#cellThree').on('click', function (event) {
   $('.game-messages').empty()
   if (ticTacToe.cells[3] === '') {
     ticTacToe.cells.splice(3, 1, ticTacToe.turn)
     $('#cellThree').text(ticTacToe.turn)
     counter++
+    updateGame(3)
     changeToken()
-    console.log(ticTacToe.cells)
+    // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
@@ -101,14 +132,15 @@ $('#cellThree').on('click', function () {
   }
 })
 
-$('#cellFour').on('click', function () {
+$('#cellFour').on('click', function (event) {
   $('.game-messages').empty()
   if (ticTacToe.cells[4] === '') {
     ticTacToe.cells.splice(4, 1, ticTacToe.turn)
     $('#cellFour').text(ticTacToe.turn)
     counter++
+    updateGame(4)
     changeToken()
-    console.log(ticTacToe.cells)
+    // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
@@ -116,14 +148,15 @@ $('#cellFour').on('click', function () {
   }
 })
 
-$('#cellFive').on('click', function () {
+$('#cellFive').on('click', function (event) {
   $('.game-messages').empty()
   if (ticTacToe.cells[5] === '') {
     ticTacToe.cells.splice(5, 1, ticTacToe.turn)
     $('#cellFive').text(ticTacToe.turn)
     counter++
+    updateGame(5)
     changeToken()
-    console.log(ticTacToe.cells)
+    // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
@@ -131,14 +164,15 @@ $('#cellFive').on('click', function () {
   }
 })
 
-$('#cellSix').on('click', function () {
+$('#cellSix').on('click', function (event) {
   $('.game-messages').empty()
   if (ticTacToe.cells[6] === '') {
     ticTacToe.cells.splice(6, 1, ticTacToe.turn)
     $('#cellSix').text(ticTacToe.turn)
     counter++
+    updateGame(6)
     changeToken()
-    console.log(ticTacToe.cells)
+    // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
@@ -146,14 +180,15 @@ $('#cellSix').on('click', function () {
   }
 })
 
-$('#cellSeven').on('click', function () {
+$('#cellSeven').on('click', function (event) {
   $('.game-messages').empty()
   if (ticTacToe.cells[7] === '') {
     ticTacToe.cells.splice(7, 1, ticTacToe.turn)
     $('#cellSeven').text(ticTacToe.turn)
     counter++
+    updateGame(7)
     changeToken()
-    console.log(ticTacToe.cells)
+    // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
@@ -161,14 +196,15 @@ $('#cellSeven').on('click', function () {
   }
 })
 
-$('#cellEight').on('click', function () {
+$('#cellEight').on('click', function (event) {
   $('.game-messages').empty()
   if (ticTacToe.cells[8] === '') {
     ticTacToe.cells.splice(8, 1, ticTacToe.turn)
     $('#cellEight').text(ticTacToe.turn)
     counter++
+    updateGame(8)
     changeToken()
-    console.log(ticTacToe.cells)
+    // console.log(ticTacToe.cells)
     $('.game-messages').text('Its ' + ticTacToe.turn + ' turn')
     checkForWinner()
   } else {
@@ -182,7 +218,7 @@ const endGame = function () {
     console.log('Restart Game')
     // this is so you cannot keep playing after there is a winner, you cannot click
     // it also doesnt allow you to play again when you click the button 'new game'
-    $('.game-board').off('click')
+    $('.no-click').off('click')
   } else {
     $('.game-messages').text('Choose another spot')
   }
@@ -204,7 +240,7 @@ const checkForWinner = function () {
     // have to change the win to true so that the end function can work
     ticTacToe.over = true
     // then have to envoke the end game function
-    gameApi.updateGame(store.game)
+    updateGame()
     console.log(store.game)
     endGame()
     // this clears the board however does it too fast need to add a dalay ir something
@@ -222,7 +258,7 @@ const checkForWinner = function () {
     $('.game-messages').text('Player O won')
     // api.updateGame()
     ticTacToe.over = true
-    gameApi.updateGame(store.game)
+    updateGame()
     console.log(store.game)
     endGame()
     // clearBoard()
@@ -232,7 +268,7 @@ const checkForWinner = function () {
     // if they all get filled up that means there was no winner so its a tie
     console.log('its a tie')
     $('.game-messages').text('Its a tie')
-    gameApi.updateGame(store.game)
+    updateGame()
     console.log(store.game)
     endGame()
     // clearBoard()

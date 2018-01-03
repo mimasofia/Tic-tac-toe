@@ -46,23 +46,31 @@ const showAllGames = function (data) {
   })
 }
 
-const updateGame = function (data, id) {
-  console.log(store.game)
-  console.log('THIS IS ' + store.game.id)
-  return $.ajax({
-    url: config.apiOrigin + '/games/' + store.game.id,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data
-  })
-}
+// const updateGame = function (index, turn) {
+//   console.log(store.game)
+//   console.log('THIS IS ' + store.game.id)
+//   return $.ajax({
+//     url: config.apiOrigin + '/games/' + store.game.id,
+//     method: 'PATCH',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data: {
+//       'game': {
+//         'cell': {
+//           'index': index,
+//           'value': ticTacToe.turn
+//         },
+//         'over': ticTacToe.over
+//       }
+//     }
+//   })
+// }
 
 module.exports = {
   createGame,
   showOneGame,
   showGame,
-  updateGame,
+  // updateGame,
   showAllGames
 }

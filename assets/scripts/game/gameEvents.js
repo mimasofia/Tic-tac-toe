@@ -33,6 +33,7 @@ const onUpdateGame = function (event) {
   const data = getFormFields(this)
   // i want it to get data from games.js as well
   event.preventDefault()
+  console.log('hit')
   console.log(data)
   gameApi.updateGame(data)
     .then(gameUi.updateGameSuccess)
