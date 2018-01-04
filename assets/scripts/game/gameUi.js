@@ -21,6 +21,7 @@ const createGameSuccess = function (data) {
   $('#show-game').removeClass('hide')
   $('#create-new-game').removeClass('hide')
   $('#content-all').text('')
+  $('#finished-game').text('')
 }
 
 const createGameFailure = function () {
@@ -71,7 +72,7 @@ const updateGameFailure = function () {
 }
 
 const showGameOverTrueSuccess = function (data) {
-  console.log(data)
+  // console.log(data)
   for (let i = 0; i < data.games.length; i++) {
     // console.log(data.games[i])
     $('#finished-game').text('-Number of games finished ' + [i])
@@ -79,8 +80,8 @@ const showGameOverTrueSuccess = function (data) {
   $('.game-messages').text('Success getting all finished games')
 }
 
-const showGameOverTrueFailure = function (error) {
-  console.log(error)
+const showGameOverTrueFailure = function () {
+  // console.log(error)
   $('.game-messages').text('Error getting finished games')
 }
 module.exports = {
