@@ -1,18 +1,19 @@
 'use strict'
 const store = require('../store')
-const game = require('../game/games')
+// const game = require('../game/games')
 
 const createGameSuccess = function (data) {
   // $('.game-board').removeClass('no-click')
   // console.log('this is data.game.id ' + data.game.id)
-  store['game'] = data.game
+  // store['game'] = data.game
+  store.game = data.game
   // console.log(store)
   $('.ui-messages').text('')
-  $('.game-messages').text('New game created')
+  $('.game-messages').text('New game created!')
   const gameHtml = (
-    `<ul>
-    <li>Game Id: ${data.game.id}</li>
-    </ul>`
+    `
+    <p>Game Id: ${data.game.id}</p>
+    `
   )
   $('#content').append(gameHtml)
   $('.game-block').removeClass('hide')
@@ -26,38 +27,38 @@ const createGameSuccess = function (data) {
 
 const createGameFailure = function () {
   // console.log(error)
-  $('.game-messages').text('Error on creating game')
+  $('.game-messages').text('Error when creating game')
 }
 const showGameSuccess = function (data) {
-  // console.log(data))
+  // console.log(ticTacToe.turn)
   // console.log(data.game.cells)
   const gameHtml = (
-    `<ul>
-    <li>Game Id: ${data.game.id}</li>
-    <li>Game Cells: ${data.game.cells}</li>
-    <li>Game Over: ${data.game.over}</li>
-    </ul>`
+    `
+    <p>Game Id: ${data.game.id}</p>
+    <p>Game Cells: ${data.game.cells}</p>
+    <p>Game Over: ${data.game.over}</p>
+    `
   )
   $('#one-game').append(gameHtml)
-  $('.game-messages').text('Success getting game')
+  $('.game-messages').text('Success getting game! See below for details.')
 }
 
 const showGameFailure = function () {
   // console.log(error)
-  $('.game-messages').text('Error getting game. Please provide game ID')
+  $('.ui-messages').text('Error getting game. Please provide game ID')
 }
 
 const showAllGamesSuccess = function (data) {
-  for (let i = 0; i < data.games.length; i++) {
+  for (let i = 0; i <= data.games.length; i++) {
     // console.log(data.games[i])
-    $('#content-all').text('-Number of games played ' + [i])
+    $('#content-all').text('Number of games played ' + [i])
   }
-  $('.game-messages').text('Success getting number of games')
+  $('.ui-messages').text('Success getting number of games! Please see below')
 }
 
 const showAllGamesFailure = function () {
   // console.log(error)
-  $('.game-messages').text('Error getting number of games')
+  $('.ui-messages').text('Error getting number of games')
 }
 
 const updateGameSuccess = function (data) {
@@ -73,16 +74,16 @@ const updateGameFailure = function () {
 
 const showGameOverTrueSuccess = function (data) {
   // console.log(data)
-  for (let i = 0; i < data.games.length; i++) {
+  for (let i = 0; i <= data.games.length; i++) {
     // console.log(data.games[i])
-    $('#finished-game').text('-Number of games finished ' + [i])
+    $('#finished-game').text('Number of games finished ' + [i])
   }
-  $('.game-messages').text('Success getting all finished games')
+  $('.ui-messages').text('Success getting all finished games! Please see below.')
 }
 
 const showGameOverTrueFailure = function () {
   // console.log(error)
-  $('.game-messages').text('Error getting finished games')
+  $('.ui-messages').text('Error getting all finished games')
 }
 module.exports = {
   createGameSuccess,

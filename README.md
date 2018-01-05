@@ -23,6 +23,8 @@ There was an issue witth the endGame function that had the .off() method. When y
 
 The updateGame function gave a lot of problems as well. This funcion is supposed to record the cells that are clicked and whether the game is over or not.  At first there was an issue of it now reading the id of the game that was being created. When that was solved (which took a while) it still did not work the way it was suppposed to. It did not take the pieces from the object that was created in the main javascriptfile for the game logic. It was not 'linked'to it. ater many atepmts the only way to get that function to work was to move it to the main javascriptfile with the game logic.
 
+One issue that needs to be fixed is that it is adding a piece to the update array when you try to get the game you played. Even if you never clicked on that spot. It is always on the first cell. None of the other ones do it
+
 User Stories:
   - As a user i want to be able to place a piece on the board.
   - As a user i would like to see my score compared to whoever im playing against.

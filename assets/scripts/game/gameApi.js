@@ -25,15 +25,15 @@ const showGame = function (data) {
   })
 }
 
-const showOneGame = function (data) {
-  return $.ajax({
-    url: config.apiOrigin + '/games/' + data.game.id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+// const showOneGame = function (data) {
+//   return $.ajax({
+//     url: config.apiOrigin + '/games/' + data.game.id,
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
 const showAllGames = function (data) {
   return $.ajax({
@@ -80,7 +80,7 @@ const showGameOverTrue = function (data) {
 
 module.exports = {
   createGame,
-  showOneGame,
+  // showOneGame,
   showGame,
   // updateGame,
   showAllGames,

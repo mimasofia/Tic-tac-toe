@@ -1,20 +1,20 @@
 'use strict'
 const store = require('../store')
-const game = require('../game/games')
+// const game = require('../game/games')
 
 const signUpSuccess = function (data) {
   // console.log(data)
-  $('.ui-messages').text('Successfully signed up')
+  $('.ui-messages').text('Successfully signed up!')
 }
 
 const signUpFailure = function () {
   // console.error(error)
-  $('.ui-messages').text('Error on sign up')
+  $('.ui-messages').text('Error when signing up. Please try again')
 }
 
 const signInSuccess = function (data) {
   // console.log('data: ', data)
-  $('.ui-messages').text('Successfully signed in')
+  $('.ui-messages').text('Successfully signed in!')
   // want to save this have token and the user d
   // store now has the user stuff after it runs even if the file is emptty
   store.user = data.user
@@ -31,22 +31,22 @@ const signInSuccess = function (data) {
 
 const signInFailure = function () {
   // console.error(error)
-  $('.ui-messages').text('Error on sign in')
+  $('.ui-messages').text('Error when signing in. Please try again')
 }
 
 const changePasswordSuccess = function () {
   // console.log('Successfully changed password')
-  $('.ui-messages').text('Successfully changed password')
+  $('.ui-messages').text('Successfully changed password!')
 }
 
 const changePasswordFailure = function () {
   // console.log()
-  $('.ui-messages').text('Error change password')
+  $('.ui-messages').text('Error when changing password. Please try again')
 }
 
 const signOutSuccess = function () {
   // console.log('Successfully signed out')
-  $('.ui-messages').text('Successfully signed out')
+  $('.ui-messages').text('Successfully signed out!')
   store.user = null
   $('#password-change').addClass('hide')
   $('#update-game').addClass('hide')
@@ -67,7 +67,7 @@ const signOutSuccess = function () {
 
 const signOutFailure = function () {
   // console.log(error)
-  $('.ui-messages').text('Error on sign out')
+  $('.ui-messages').text('Error when signing out. Please try again')
 }
 
 module.exports = {

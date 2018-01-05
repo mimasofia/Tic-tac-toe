@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -37,7 +37,7 @@
     <div class="game-messages"></div>
 
 <div class="all-forms">
-  <form id="sign-in">
+  <form id="sign-in" class="sign-in">
     <fieldset>
       <legend>Sign In</legend>
       <input type="text" name="credentials[email]" placeholder="Enter Email Here">
@@ -46,7 +46,7 @@
     </fieldset>
   </form>
 
-    <form id="sign-up">
+    <form id="sign-up" class="sign-up">
       <fieldset>
         <legend>Sign up!</legend>
         <input type="text" name="credentials[email]" value="" placeholder="Enter Email">
@@ -56,15 +56,31 @@
       </fieldset>
     </form>
 
-    <form id='create-new-game'>
+    <form id='create-new-game' class="create-new-game">
       <fieldset>
-        <legend>New Game</legend>
+        <legend class="new-game-padding">New Game</legend>
         <div id="content"></div>
         <input type="submit" name="submit" value="New Game">
       </fieldset>
     </form>
 
-    <form id='show-game'>
+    <form id='show-all-games' class="show-all-games">
+      <fieldset>
+        <legend>Number of games played</legend>
+        <div id="content-all"></div>
+        <input type="submit" name="submit" value="Games Played">
+      </fieldset>
+    </form>
+
+    <form id='show-game-over-true' class="show-game-over-true">
+      <fieldset>
+        <legend>Number of finished games</legend>
+        <div id="finished-game"></div>
+        <input type="submit" name="submit" value="Finished Games">
+      </fieldset>
+    </form>
+
+    <form id='show-game' class="show-game">
       <fieldset>
         <legend>Show specfic game</legend>
         <div id="one-game"></div>
@@ -73,23 +89,7 @@
       </fieldset>
     </form>
 
-    <form id='show-all-games'>
-      <fieldset>
-        <legend>Number of games played</legend>
-        <div id="content-all"></div>
-        <input type="submit" name="submit" value="Games Played">
-      </fieldset>
-    </form>
-
-    <form id='show-game-over-true'>
-      <fieldset>
-        <legend>Number of finished games</legend>
-        <div id="finished-game"></div>
-        <input type="submit" name="submit" value="Finished Games">
-      </fieldset>
-    </form>
-
-    <form id="password-change">
+    <form id="password-change" class="password-change">
         <fieldset>
           <legend>Change Password</legend>
           <input type="password" name="passwords[old]" placeholder="Old password here">
@@ -98,7 +98,7 @@
         </fieldset>
       </form>
 
-      <form id="sign-out">
+      <form id="sign-out" class="sign-out">
         <fieldset>
           <legend>Sign Out</legend>
           <input type="submit" name="submit" value="Sign out">

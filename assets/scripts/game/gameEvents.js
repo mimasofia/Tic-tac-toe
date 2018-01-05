@@ -4,7 +4,7 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const gameApi = require('./gameApi')
 const gameUi = require('./gameUi')
-const store = require('../store')
+// const store = require('../store')
 
 const onCreateGame = function (event) {
   event.preventDefault()
@@ -38,7 +38,7 @@ const onUpdateGame = function (event) {
   gameApi.updateGame(data)
     .then(gameUi.updateGameSuccess)
     .catch(gameUi.updateGameFailure)
-  $('#update-game').find('input:text, input:password, select, textarea').val('')
+  // $('#update-game').find('input:text, input:password, select, textarea').val('')
 }
 
 const onShowGameOverTrue = function (event) {
