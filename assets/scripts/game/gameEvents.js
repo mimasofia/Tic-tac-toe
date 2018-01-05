@@ -30,16 +30,16 @@ const onShowAllGames = function (event) {
     .catch(gameUi.showAllGamesFailure)
 }
 
-const onUpdateGame = function (event) {
-  const data = getFormFields(this)
-  event.preventDefault()
-  // console.log('hit')
-  // console.log(data)
-  gameApi.updateGame(data)
-    .then(gameUi.updateGameSuccess)
-    .catch(gameUi.updateGameFailure)
-  // $('#update-game').find('input:text, input:password, select, textarea').val('')
-}
+// const onUpdateGame = function (event) {
+//   const data = getFormFields(this)
+//   event.preventDefault()
+//   // console.log('hit')
+//   // console.log(data)
+//   gameApi.updateGame(data)
+//     .then(gameUi.updateGameSuccess)
+//     .catch(gameUi.updateGameFailure)
+//   // $('#update-game').find('input:text, input:password, select, textarea').val('')
+// }
 
 const onShowGameOverTrue = function (event) {
   const data = getFormFields(this)
@@ -53,7 +53,7 @@ const addHandlers = function () {
   $('#create-new-game').on('submit', onCreateGame)
   $('#show-game').on('submit', onShowGame)
   $('#show-all-games').on('submit', onShowAllGames)
-  $('#update-game').on('submit', onUpdateGame)
+  // $('#update-game').on('submit', onUpdateGame)
   $('#show-game-over-true').on('submit', onShowGameOverTrue)
 }
 
